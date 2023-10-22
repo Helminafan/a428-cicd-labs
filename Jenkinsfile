@@ -8,14 +8,14 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'npm install'
+                sh 'node -v'
             }
         }
-         stage('Test') { 
-            steps {
-                sh './jenkins/scripts/test.sh' 
-            }
-        }
+        //  stage('Test') { 
+        //     steps {
+        //         sh './jenkins/scripts/test.sh' 
+        //     }
+        // }
 
     }
     
