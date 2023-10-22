@@ -10,7 +10,7 @@ pipeline {
            
             steps {
                 sh 'npm cache clean --f'
-                sh 'npm -vversi'
+                sh 'npm -v'
             }
         }
       
