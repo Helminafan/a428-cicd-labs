@@ -18,7 +18,7 @@ pipeline {
         }
          stage('Manual Approval') {
             steps {
-                 input(id: 'manual-approval', message: 'Lanjutkan ke tahap Deploy?', parameters: [booleanParam(name: 'PROCEED', description: 'Proceed?')], submitter: 'user')
+                 input(id: 'manual-approval', message: 'Lanjutkan ke tahap Deploy?', parameters: [booleanParam(defaultValue: false, description: 'Proceed?')], submitter: 'user')
             }
         }
         stage('Deploy') {
