@@ -16,11 +16,23 @@ pipeline {
                 sh './jenkins/scripts/test.sh' 
             }
         }
+         stage('Manual Approval') {
+            steps {
+                input(id: 'manual-approval', message: 'Lanjutkan ke tahap Deploy?', parameters: [boolean(defaultValue: false, description: 'Proceed?', name: 'PROCEED')], submitter: 'user')
+            }
+        }
         stage('Deploy') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
-                sleep time: 60, unit: 'SECONDS'
-                sh './jenkins/scripts/kill.sh'
+                def approval = input(id: 'manual-approval')
+                if (approval.PROCEED) {
+                        // Lanjutkan dengan tahap Deploy
+                        echo 'Melanjutkan ke tahap Deploy...'
+                        sleep time: 60, unit: 'SECONDS'
+                        sh './jenkins/scripts/deploy.sh'
+                    }
+                else{
+                     sh './jenkins/scripts/kill.sh'
+                }
             }
         }
     }
