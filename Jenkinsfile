@@ -29,7 +29,7 @@ pipeline {
                         sleep time: 60, unit: 'SECONDS'
                         sh './jenkins/scripts/deploy.sh'
                     }
-                else{
+                else {
                      sh './jenkins/scripts/kill.sh'
                 }
             }
