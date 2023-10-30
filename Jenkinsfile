@@ -25,7 +25,6 @@ pipeline {
             steps {
                 def approval = input(id: 'manual-approval')
                 if (approval.PROCEED) {
-                        // Lanjutkan dengan tahap Deploy
                         echo 'Melanjutkan ke tahap Deploy...'
                         sleep time: 60, unit: 'SECONDS'
                         sh './jenkins/scripts/deploy.sh'
